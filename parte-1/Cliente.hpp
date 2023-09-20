@@ -154,6 +154,41 @@ void deleteCliente(vector<Cliente> *lista){
     return;
 }
 
+/*  A função dispAlteraCliente imprime na tela do usuário as opções disponíveis relacionadas a alteração de cliente
+    e solicita que o usuário escolha uma, caso o usuário digite uma opção não disponível é solicitado
+    novamente ao usuário que escolha uma opção disponível, ao informar uma das opções a função retorna
+    a escolha do usuário.
+*/
+int dispAlteraCliente(){
+    int op = 0;
+
+    limpaTela();
+    cout << endl << "O que deseja alterar?" << endl << endl
+        << "#1. Nome" << endl
+        << "#2. Data de nascimento" << endl
+        << "#3. CNH" << endl 
+        << "#0. Sair" << endl << endl
+        << "> #";
+    cin >> op;
+    limpaBuffer();
+        
+    while (op < 0 || op > 3){
+        limpaTela();
+        cout << "********* LocaFINA S/A *********" << endl << endl << "\t";
+        cout << endl << "O que deseja alterar?" << endl << endl
+            << "#1. Nome" << endl
+            << "#2. Data de nascimento" << endl
+            << "#3. CNH" << endl 
+            << "#0. Sair" << endl << endl
+            << endl << "Digite uma opcao valida!" << endl
+            << "> #";
+        cin >> op;
+        limpaBuffer();
+    }
+
+    return op;
+}
+
 /*  A função alteraCliente solicita do usuário um CPF e faz uma busca desse CPF no vetor de clientes,
     caso encontre, mostra os dados do cliente para o usuário e pergunta se o usuário deseja altera algum dado,
     caso o usuário selecione alguma das opções disponíveis, é solicitado e executado as alterações correspondentes,
@@ -180,26 +215,26 @@ void alteraCliente(vector<Cliente> *lista){
     do{
         op = dispAlteraCliente();
         switch (op){
-        case 1:
-            cout << "Informe o novo nome do cliente:" << endl << "> ";
-            getline(cin, nome);
-            (*lista)[idCliente].Nome = nome;
-            break;
-        case 2:
-            cout << "Informe a nova data de nascimento:" << endl << "> ";
-            setData(&(*lista)[idCliente].DtNascimento);
-            while (!(*lista)[idCliente].DtNascimento.isData()){
-                cout << "Informe uma data valida:" << endl;
+            case 1:
+                cout << "Informe o novo nome do cliente:" << endl << "> ";
+                getline(cin, nome);
+                (*lista)[idCliente].Nome = nome;
+                break;
+            case 2:
+                cout << "Informe a nova data de nascimento:" << endl << "> ";
                 setData(&(*lista)[idCliente].DtNascimento);
-            }
-            break;
-        case 3:
-            cout << "Informe o novo numero da CNH:" << endl << "> ";
-            getline(cin, cnh);
-            (*lista)[idCliente].CNH = cnh;
-            break;
-        default:
-            break;
+                while (!(*lista)[idCliente].DtNascimento.isData()){
+                    cout << "Informe uma data valida:" << endl;
+                    setData(&(*lista)[idCliente].DtNascimento);
+                }
+                break;
+            case 3:
+                cout << "Informe o novo numero da CNH:" << endl << "> ";
+                getline(cin, cnh);
+                (*lista)[idCliente].CNH = cnh;
+                break;
+            default:
+                break;
         }
         if(op != 0){
             cout << "Alteracoes realizadas com sucesso!" << endl;
