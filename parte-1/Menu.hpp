@@ -5,7 +5,7 @@
 #include<string>
 #include<vector>
 
-// Incluindo bibliotecas próprias com funções criadas para o devido objetivo proposto
+// Incluindo bibliotecas próprias com funcões criadas para o devido objetivo proposto
 #include "Veiculo.hpp"
 #include "Locacao.hpp"
 #include "Data.hpp"
@@ -14,12 +14,12 @@
 
 using namespace std;
 
-// Esta biblioteca foi criada para conter funções relacionadas à manipulação de menu
+// Esta biblioteca foi criada para conter funcões relacionadas a manipulacao de menu
 
-/*  A função dispMenuCliente imprime na tela do usuário as opções disponíveis relacionadas ao cliente
-    e solicita que o usuário escolha uma, caso o usuário digite uma opção não disponível é solicitado
-    novamente ao usuário que escolha uma opção disponível, ao informar uma das opções a função retorna
-    a escolha do usuário.
+/*  A funcao dispMenuCliente imprime na tela do usuario as opcões disponiveis relacionadas ao cliente
+    e solicita que o usuario escolha uma, caso o usuario digite uma opcao nao disponivel e solicitado
+    novamente ao usuario que escolha uma opcao disponivel, ao informar uma das opcões a funcao retorna
+    a escolha do usuario.
 */
 int dispMenuCliente(){
     int op = 0;
@@ -59,10 +59,10 @@ int dispMenuCliente(){
     return op;
 }
 
-/*  A função dispMenuVeiculo imprime na tela do usuário as opções disponíveis relacionadas ao veículo
-    e solicita que o usuário escolha uma, caso o usuário digite uma opção não disponível é solicitado
-    novamente ao usuário que escolha uma opção disponível, ao informar uma das opções a função retorna
-    a escolha do usuário.
+/*  A funcao dispMenuVeiculo imprime na tela do usuario as opcões disponiveis relacionadas ao veiculo
+    e solicita que o usuario escolha uma, caso o usuario digite uma opcao nao disponivel e solicitado
+    novamente ao usuario que escolha uma opcao disponivel, ao informar uma das opcões a funcao retorna
+    a escolha do usuario.
 */
 int dispMenuVeiculo(){
     int op = 0;
@@ -103,13 +103,13 @@ int dispMenuVeiculo(){
 }
 
 /*
-    Função para o menu de clientes
+    Funcao para o menu de clientes
 */
 void menuCliente(vector<Cliente> *lista){
-    int opcao; // variável que irá receber a opção de escolha do usuário
+    int opcao; // variavel que ira receber a opcao de escolha do usuario
     do{
-        opcao = dispMenuCliente(); // chama o menu de clientes da biblioteca Menu e armazena a escolha do usuário
-        switch (opcao){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Cliente
+        opcao = dispMenuCliente(); // chama o menu de clientes da biblioteca Menu e armazena a escolha do usuario
+        switch (opcao){ // se o usuario escolher uma opcao dentre as diponiveis abaixo, sera chamada a funcao correspondente da biblioteca Cliente
             case 1:
                 setCliente(lista);
                 break;
@@ -128,18 +128,18 @@ void menuCliente(vector<Cliente> *lista){
             default:
                 break;
         }
-    } while (opcao != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
+    } while (opcao != 0); // o programa ira encerrar caso o usuario escolha sair, selecionando 0
 }
 
 /*
-    Função para o menu de veiculos
+    Funcao para o menu de veiculos
 */
 void menuVeiculos(vector<Veiculo> *lista){
-    int op; // variável que irá receber a opção de escolha do usuário
+    int op; // variavel que ira receber a opcao de escolha do usuario
 
     do{
-        op = dispMenuVeiculo(); // chama o menu de veiculos da biblioteca Menu e armazena a escolha do usuário
-        switch (op){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Veiculo
+        op = dispMenuVeiculo(); // chama o menu de veiculos da biblioteca Menu e armazena a escolha do usuario
+        switch (op){ // se o usuario escolher uma opcao dentre as diponiveis abaixo, sera chamada a funcao correspondente da biblioteca Veiculo
             case 1:
                 setVeiculo(lista);
                 break;
@@ -158,18 +158,18 @@ void menuVeiculos(vector<Veiculo> *lista){
             default:
                 break;
         }
-    } while (op != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
+    } while (op != 0); // o programa ira encerrar caso o usuario escolha sair, selecionando 0
 }
 
 /*
-    Função para o menu de locação
+    Funcao para o menu de locacao
 */
 void menuLocacao(vector<Locacao> *lista){
-    int op; // variável que irá receber a opção de escolha do usuário
+    int op; // variavel que ira receber a opcao de escolha do usuario
 
     do{
-        op = dispMenuVeiculo(); // chama o menu de Locação e armazena a escolha do usuário
-        switch (op){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Veiculo
+        op = dispMenuVeiculo(); // chama o menu de Locacao e armazena a escolha do usuario
+        switch (op){ // se o usuario escolher uma opcao dentre as diponiveis abaixo, sera chamada a funcao correspondente da biblioteca Veiculo
             case 0:
                 break;
             case 1:
@@ -187,53 +187,53 @@ void menuLocacao(vector<Locacao> *lista){
             default:
                 break;
         }
-    } while (op != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
+    } while (op != 0); // o programa ira encerrar caso o usuario escolha sair, selecionando 0
 }
 
 /*
-    Função para o menu de ocorrencia
+    Funcao para o menu de ocorrencia
 */
 void menuOcorrencia(vector<Locacao> *lista){
-    int op; // variável que irá receber a opção de escolha do usuário
+    int op; // variavel que ira receber a opcao de escolha do usuario
 
     do{
-        op = dispMenuVeiculo(); // chama o menu de Locação e armazena a escolha do usuário
-        switch (op){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Veiculo
+        op = dispMenuVeiculo(); // chama o menu de Locacao e armazena a escolha do usuario
+        switch (op){ // se o usuario escolher uma opcao dentre as diponiveis abaixo, sera chamada a funcao correspondente da biblioteca Veiculo
         case 0:
             break;
         case 1:
-            //setOcorrencia(lista);
+            setOcorrencia(lista);
             break;
         case 2:
-            //deleteOcorrencia(lista);
+            deleteOcorrencia(lista);
             break;
         case 3:
-            //alteraOcorrencia(lista);
+            alteraOcorrencia(lista);
             break;
         case 4:
-            //listaOcorrenciaCliente(*lista);
+            listaOcorrenciaCliente(*lista);
             break;
         case 5:
-            //listaOcorrenciaVeiculo(*lista);
+            listaOcorrenciaVeiculo(*lista);
             break;
         default:
             break;
         }
-    } while (op != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
+    } while (op != 0); // o programa ira encerrar caso o usuario escolha sair, selecionando 0
 }
 
 /*
-    Função para o menu principal
+    Funcao para o menu principal
 */
 int menuPrincipal(void){
     int op = 0;
     do{
         cout << "********* LocaFINA S/A *********" << endl << endl << "\t";
-        cout << endl << "Escolha uma opção abaixo:" << endl << endl
-            << "#1. Gestão de Clientes" << endl
-            << "#2. Gestão de Veiculos" << endl
-            << "#3. Gestão de Ocorrências" << endl 
-            << "#4. Gestão de Locação" << endl
+        cout << endl << "Escolha uma opcao abaixo:" << endl << endl
+            << "#1. Gestao de Clientes" << endl
+            << "#2. Gestao de Veiculos" << endl
+            << "#3. Gestao de Ocorrencias" << endl 
+            << "#4. Gestao de Locacao" << endl
             << "#0. Sair" << endl << endl
             << endl << "Digite uma opcao valida!" << endl
             << "> # ";
