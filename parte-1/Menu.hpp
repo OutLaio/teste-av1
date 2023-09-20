@@ -4,7 +4,12 @@
 #include<iostream>
 #include<string>
 #include<vector>
+
+// Incluindo bibliotecas próprias com funções criadas para o devido objetivo proposto
+#include "Veiculo.hpp"
+#include "Locacao.hpp"
 #include "Data.hpp"
+#include "Cliente.hpp"
 #include "Utilitarios.hpp"
 
 using namespace std;
@@ -16,7 +21,7 @@ using namespace std;
     novamente ao usuário que escolha uma opção disponível, ao informar uma das opções a função retorna
     a escolha do usuário.
 */
-int dispMenuCliente(void){
+int dispMenuCliente(){
     int op = 0;
     Data data = getDataAtual();
 
@@ -30,7 +35,7 @@ int dispMenuCliente(void){
         << "#4. Listar todos os clientes" << endl 
         << "#5. Localizar um cliente (por CPF)" << endl 
         << "#0. Sair" << endl << endl
-        << "> #";
+        << "> # ";
     cin >> op;
     limpaBuffer();
         
@@ -46,11 +51,11 @@ int dispMenuCliente(void){
             << "#5. Localizar um cliente (por CPF)" << endl 
             << "#0. Sair" << endl << endl
             << endl << "Digite uma opcao valida!" << endl
-            << "> #";
+            << "> # ";
         cin >> op;
         limpaBuffer();
     }
-    
+
     return op;
 }
 
@@ -59,7 +64,7 @@ int dispMenuCliente(void){
     novamente ao usuário que escolha uma opção disponível, ao informar uma das opções a função retorna
     a escolha do usuário.
 */
-int dispMenuVeiculo(void){
+int dispMenuVeiculo(){
     int op = 0;
     Data data = getDataAtual();
 
@@ -97,75 +102,144 @@ int dispMenuVeiculo(void){
     return op;
 }
 
-/*  A função dispAlteraVeiculo imprime na tela do usuário as opções disponíveis relacionadas a alteração de veículo
-    e solicita que o usuário escolha uma, caso o usuário digite uma opção não disponível é solicitado
-    novamente ao usuário que escolha uma opção disponível, ao informar uma das opções a função retorna
-    a escolha do usuário.
+/*
+    Função para o menu de clientes
 */
-int dispAlteraVeiculo(void){
-    int op = 0;
-
-    limpaTela();
-    cout << endl << "O que deseja alterar?" << endl << endl
-        << "#1. Renavam" << endl
-        << "#2. Data e hora de retirada" << endl
-        << "#3. Data e hora de entrega" << endl
-        << "#4. Loja de retirada" << endl 
-        << "#0. Sair" << endl << endl
-        << "> #";
-    cin >> op;
-    limpaBuffer();
-        
-    while (op < 0 || op > 4){
-        limpaTela();
-        cout << "********* LocaFINA S/A *********" << endl << endl << "\t";
-        cout << endl << "O que deseja alterar?" << endl << endl
-            << "#1. Renavam" << endl
-            << "#2. Data e hora de retirada" << endl
-            << "#3. Data e hora de entrega" << endl
-            << "#4. Loja de retirada" << endl 
-            << "#0. Sair" << endl << endl
-            << endl << "Digite uma opcao valida!" << endl
-            << "> #";
-        cin >> op;
-        limpaBuffer();
-    }
-    
-    return op;
+void menuCliente(vector<Cliente> *lista){
+    int opcao; // variável que irá receber a opção de escolha do usuário
+    do{
+        opcao = dispMenuCliente(); // chama o menu de clientes da biblioteca Menu e armazena a escolha do usuário
+        switch (opcao){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Cliente
+            case 1:
+                setCliente(lista);
+                break;
+            case 2:
+                deleteCliente(lista);
+                break;
+            case 3:
+                alteraCliente(lista);
+                break;
+            case 4:
+                listaClientes(*lista);
+                break;
+            case 5:
+                buscaCliente(*lista);
+                break;
+            default:
+                break;
+        }
+    } while (opcao != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
 }
 
-/*  A função dispAlteraCliente imprime na tela do usuário as opções disponíveis relacionadas a alteração de cliente
-    e solicita que o usuário escolha uma, caso o usuário digite uma opção não disponível é solicitado
-    novamente ao usuário que escolha uma opção disponível, ao informar uma das opções a função retorna
-    a escolha do usuário.
+/*
+    Função para o menu de veiculos
 */
-int dispAlteraCliente(void){
-    int op = 0;
+void menuVeiculos(vector<Veiculo> *lista){
+    int op; // variável que irá receber a opção de escolha do usuário
 
-    limpaTela();
-    cout << endl << "O que deseja alterar?" << endl << endl
-        << "#1. Nome" << endl
-        << "#2. Data de nascimento" << endl
-        << "#3. CNH" << endl 
-        << "#0. Sair" << endl << endl
-        << "> #";
-    cin >> op;
-    limpaBuffer();
-        
-    while (op < 0 || op > 3){
-        limpaTela();
+    do{
+        op = dispMenuVeiculo(); // chama o menu de veiculos da biblioteca Menu e armazena a escolha do usuário
+        switch (op){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Veiculo
+            case 1:
+                setVeiculo(lista);
+                break;
+            case 2:
+                deleteVeiculo(lista);
+                break;
+            case 3:
+                alteraVeiculo(lista);
+                break;
+            case 4:
+                listaVeiculos(*lista);
+                break;
+            case 5:
+                buscaVeiculo(*lista);
+                break;
+            default:
+                break;
+        }
+    } while (op != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
+}
+
+/*
+    Função para o menu de locação
+*/
+void menuLocacao(vector<Locacao> *lista){
+    int op; // variável que irá receber a opção de escolha do usuário
+
+    do{
+        op = dispMenuVeiculo(); // chama o menu de Locação e armazena a escolha do usuário
+        switch (op){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Veiculo
+            case 0:
+                break;
+            case 1:
+                //setLocacao(lista);
+                break;
+            case 2:
+                //deleteLocacao(lista);
+                break;
+            case 3:
+                //alteraLocacao(lista);
+                break;
+            case 4:
+                //listaLocacao(*lista);
+                break;
+            default:
+                break;
+        }
+    } while (op != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
+}
+
+/*
+    Função para o menu de ocorrencia
+*/
+void menuOcorrencia(vector<Locacao> *lista){
+    int op; // variável que irá receber a opção de escolha do usuário
+
+    do{
+        op = dispMenuVeiculo(); // chama o menu de Locação e armazena a escolha do usuário
+        switch (op){ // se o usuário escolher uma opção dentre as diponíveis abaixo, será chamada a função correspondente da biblioteca Veiculo
+        case 0:
+            break;
+        case 1:
+            //setOcorrencia(lista);
+            break;
+        case 2:
+            //deleteOcorrencia(lista);
+            break;
+        case 3:
+            //alteraOcorrencia(lista);
+            break;
+        case 4:
+            //listaOcorrenciaCliente(*lista);
+            break;
+        case 5:
+            //listaOcorrenciaVeiculo(*lista);
+            break;
+        default:
+            break;
+        }
+    } while (op != 0); // o programa irá encerrar caso o usuário escolha sair, selecionando 0
+}
+
+/*
+    Função para o menu principal
+*/
+int menuPrincipal(void){
+    int op = 0;
+    do{
         cout << "********* LocaFINA S/A *********" << endl << endl << "\t";
-        cout << endl << "O que deseja alterar?" << endl << endl
-            << "#1. Nome" << endl
-            << "#2. Data de nascimento" << endl
-            << "#3. CNH" << endl 
+        cout << endl << "Escolha uma opção abaixo:" << endl << endl
+            << "#1. Gestão de Clientes" << endl
+            << "#2. Gestão de Veiculos" << endl
+            << "#3. Gestão de Ocorrências" << endl 
+            << "#4. Gestão de Locação" << endl
             << "#0. Sair" << endl << endl
             << endl << "Digite uma opcao valida!" << endl
-            << "> #";
+            << "> # ";
         cin >> op;
-        limpaBuffer();
-    }
-    
+    }while(op < 0 || op > 4);
+
     return op;
 }
 
