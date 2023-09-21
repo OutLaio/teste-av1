@@ -222,7 +222,7 @@ void menuVeiculos(vector<Veiculo> *lista){
 /*
     Funcao para o menu de locacao
 */
-void menuLocacao(vector<Locacao> *lista){
+void menuLocacao(vector<Locacao> *locacoes, vector<Cliente> clientes, vector<Veiculo> veiculos){
     int op; // variavel que ira receber a opcao de escolha do usuario
     do{
         op = dispMenuLocacao(); // chama o menu de Locacao e armazena a escolha do usuario
@@ -230,16 +230,16 @@ void menuLocacao(vector<Locacao> *lista){
             case 0:
                 break;
             case 1:
-                //setLocacao(lista);
+                setLocacao(locacoes, clientes, veiculos);
                 break;
             case 2:
-                //deleteLocacao(lista);
+                deleteLocacao(locacoes, clientes, veiculos);
                 break;
             case 3:
-                //alteraLocacao(lista);
+                alteraLocacao(locacoes, clientes, veiculos);
                 break;
             case 4:
-                //listaLocacao(*lista);
+                listaLocacao(*locacoes);
                 break;
             default:
                 break;
@@ -258,19 +258,19 @@ void menuOcorrencia(vector<Locacao> *lista){
         case 0:
             break;
         case 1:
-            setOcorrencia(lista);
+            //setOcorrencia(lista);
             break;
         case 2:
-            deleteOcorrencia(lista);
+            //deleteOcorrencia(lista);
             break;
         case 3:
-            alteraOcorrencia(lista);
+            //alteraOcorrencia(lista);
             break;
         case 4:
-            listaOcorrenciaCliente(*lista);
+            //listaOcorrenciaCliente(*lista);
             break;
         case 5:
-            listaOcorrenciaVeiculo(*lista);
+            //listaOcorrenciaVeiculo(*lista);
             break;
         default:
             break;

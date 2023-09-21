@@ -15,7 +15,8 @@ typedef struct T_data{
     int dia, mes, ano;
     int hora = -1, min = -1;
 
-    /*  A função toString retorna uma string com a data formatada (Ex: 19/09/2023)
+    /*
+        A função toString retorna uma string com a data formatada (Ex: 19/09/2023)
     */
     string toString(){
         string data = "";

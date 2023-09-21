@@ -33,7 +33,7 @@ int main(){
                 menuOcorrencia(&listaLocacao);
                 break;
             case 4:
-                menuLocacao(&listaLocacao);
+                menuLocacao(&listaLocacao, listaClientes, listaVeiculos);
                 break;
             default:
                 cout << "Encerrando programa..." << endl;

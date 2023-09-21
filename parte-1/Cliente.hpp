@@ -32,7 +32,9 @@ typedef struct T_cliente{
         pausa_tela();
     }
 
-    /*  A função dispListaCliente quando executada ira imprimir para o usuário os dados 
+    /**
+        @param id Inteiro que representa a posiçao do cliente no vetor cliente
+        @brief A função dispListaCliente quando executada ira imprimir para o usuário os dados 
         correspondentes a um cliente, sendo ela utilizada para listar todos os clientes. 
     */
     void dispListaClientes(int id){

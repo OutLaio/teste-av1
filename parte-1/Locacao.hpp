@@ -80,6 +80,9 @@ Veiculo addVeiculo(string placa, vector<Veiculo> lista){
     return lista[id];
 }
 
+/*
+    F
+*/
 void setLocacao(vector<Locacao> *lista, vector<Cliente> clientes, vector<Veiculo> veiculos){
     string cpf, placa;
     Locacao novo;
@@ -153,13 +156,17 @@ void setLocacao(vector<Locacao> *lista, vector<Cliente> clientes, vector<Veiculo
 }
 
 // Deletar locacao
-void deleteLocacao(vector<Locacao> *lista){
+void deleteLocacao(vector<Locacao> *lista, vector<Cliente> clientes, vector<Veiculo> veiculos){
     string placa;
     string CPF_t;
+
+    limpaTela();
     cout << "********* Deletar  Locacao *********" << endl << endl;
     cout << "Informe a placa do veiculo: ";
     getline(cin, placa);
+
     while(!hasPlaca(placa, veiculos)){
+        char op;
         cout << "Placa nao cadastrada no sistema!" << endl;
         cout << "Deseja tentar novamente? ([S]im / [N]ao)" << endl << ">";
         cin >> op;
@@ -172,20 +179,19 @@ void deleteLocacao(vector<Locacao> *lista){
         getline(cin, placa);
     }
     cout << endl << "Locacoes do veiculo com placa " << placa << endl;
-    for(size_t i=0; i<lista.size(); i++){
+    for(size_t i=0; i<(*lista).size(); i++){
         if(lista->at(i).veiculo.Placa==placa){
             cout << "Locacao " << i << endl;
             cout << endl << "CPF do clinte: "
                 << lista->at(i).cliente.CPF << endl
                 << "Renavan do veiculo: "
                 << lista->at(i).veiculo.Renavan << endl << endl;
-            
             }
-
     }
     cout << endl << "Informe o CPF do cliente: ";
     getline(cin, CPF_t);
     while((CPF_t.size() > 11 || CPF_t.size() < 9) || !hasCPF(CPF_t, clientes)){
+        char op;
         cout << "CPF invalido ou nao cadastrado!" << endl;
         cout << "Deseja tentar novamente? ([S]im / [N]ao)" << endl << ">";
         cin >> op;
@@ -198,22 +204,25 @@ void deleteLocacao(vector<Locacao> *lista){
         getline(cin, CPF_t);
     }
     
-    for(size_t i=0; i<lista.size(); i++){
+    for(size_t i=0; i<(*lista).size(); i++){
         if(lista->at(i).cliente.CPF==CPF_t){
             lista->erase(lista->begin()+i);
-            cout << "Locacao deletada com sucesso " << endl;
+            cout << "Locacao deletada com sucesso!" << endl;
         }
-
     }
 }
 
-void alteraLocacao(vector<Locacao> *lista){
+void alteraLocacao(vector<Locacao> *lista, vector<Cliente> clientes, vector<Veiculo> veiculos){
     string placa;
     string CPF_t;
+
+    limpaTela();
     cout << "********* ALtera Locacao *********" << endl << endl;
     cout << "Informe a placa do veiculo: ";
     getline(cin, placa);
+
     while(!hasPlaca(placa, veiculos)){
+        char op;
         cout << "Placa nao cadastrada no sistema!" << endl;
         cout << "Deseja tentar novamente? ([S]im / [N]ao)" << endl << ">";
         cin >> op;
@@ -226,20 +235,19 @@ void alteraLocacao(vector<Locacao> *lista){
         getline(cin, placa);
     }
     cout << endl << "Lista de todos os passageiros que tem reserva com esse veiculo de placa: " << placa << endl;
-    for(size_t i=0; i<lista.size(); i++){
+    for(size_t i=0; i<(*lista).size(); i++){
         if(lista->at(i).veiculo.Placa==placa){
-            cout << "Cliente locacao: " << i
+            cout << "Cliente locacao: " << i << endl;
             cout << endl << "CPF do clinte: "
                 << lista->at(i).cliente.CPF << endl
                 << "Nome do cliente: "
                 << lista->at(i).cliente.Nome << endl;
-            
             }
-
     }
     cout << endl << "Informe o CPF do cliente: ";
     getline(cin, CPF_t);
     while((CPF_t.size() > 11 || CPF_t.size() < 9) || !hasCPF(CPF_t, clientes)){
+        char op;
         cout << "CPF invalido ou nao cadastrado!" << endl;
         cout << "Deseja tentar novamente? ([S]im / [N]ao)" << endl << ">";
         cin >> op;
@@ -252,33 +260,39 @@ void alteraLocacao(vector<Locacao> *lista){
         getline(cin, CPF_t);
     }
 
-    for(size_t i=0; i<lista.size(); i++){
+    for(size_t i=0; i<(*lista).size(); i++){
         if(lista->at(i).cliente.CPF==CPF_t){
             cout << "Digite uma nova data de entrega: " << endl;
-            lista->at(i).Dt_HoraEntrega.setData();
-            
+            setData(&(*lista).at(i).Dt_HoraEntrega);
         }
-
     }
-
 }
 
-void listaLocacao(vector<Locacao> *lista){
-    cout << "Lista de todas as locacoes: " << endl
+void listaLocacao(vector<Locacao> lista){
+    limpaTela();
+    cout << "Lista de locacoes realizadas: " << endl;
+    if(lista.size() == 0){
+        cout << "Nenhuma locação registrada!" << endl;
+        pausa_tela();
+        return;
+    }
     for(size_t i=0; i<lista.size(); i++){
-        if(lista->at(i).Realizada=='s'){
-            cout << "Locacao realizada: "
-            << "Nome do cliente: "
-            << lista.
-            << "Renavan do carro: "
-            << "Dt_Hora Retirada: "
-            << "Dt_Hora Entrega: "
-        
+        if(lista.at(i).Realizada=='s'){
+            cout << "Nome do cliente: " << lista.at(i).cliente.Nome << endl;
+            cout << "Renavan do carro: " << lista.at(i).veiculo.Renavan << endl;
+            cout << "Dt_Hora Retirada: " << lista.at(i).Dt_HoraRetirada.toString() << endl;
+            cout << "Dt_Hora Entrega: " << lista.at(i).Dt_HoraEntrega.toString() << endl;
         }
     }
+    cout << "Lista de locacoes ainda não realizadas: " << endl;
+    for(size_t i=0; i<lista.size(); i++){
+        if(lista.at(i).Realizada=='n'){
+            cout << "Nome do cliente: " << lista.at(i).cliente.Nome << endl;
+            cout << "Renavan do carro: " << lista.at(i).veiculo.Renavan << endl;
+            cout << "Dt_Hora Retirada: " << lista.at(i).Dt_HoraRetirada.toString() << endl;
+            cout << "Dt_Hora Entrega: " << lista.at(i).Dt_HoraEntrega.toString() << endl;
+        }
+    }
+    pausa_tela();
 }
-
-
-
-
 #endif
