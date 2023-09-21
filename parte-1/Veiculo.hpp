@@ -32,7 +32,7 @@ typedef struct T_veiculo{
             << "Data e hora da entrega (prevista): " << this->Data_Hora_Entrega.getHora()
             << " " << this->Data_Hora_Entrega.toString() << endl
             << "Loja de retirada: " << this->Loja_Retirada << endl;
-        getchar();
+        pausa_tela();
     }
 
     /*  A função dispListaVeiculo quando executada ira imprimir para o usuário os dados 
@@ -108,7 +108,7 @@ void setVeiculo(vector<Veiculo> *lista){
     limpaTela();
     cout << "********* Cadastro de Veiculo *********" << endl << endl;
     cout << "Veiculo cadastrado com sucesso!" << endl;
-    getchar();
+    pausa_tela();
 }
 
 /*  A função indexVeiculo executa uma busca no vetor de veículos por uma determinada placa,
@@ -122,9 +122,8 @@ int indexVeiculo(string Placa, vector<Veiculo> lista){
         }
     }
     limpaTela();
-    cout << "Placa informada nao encontrada!" << endl
-         << "(Pressione qualquer tecla para continuar...)";
-    getchar();
+    cout << "Placa informada nao encontrada!" << endl;
+    pausa_tela();
     return -1;
 }
 
@@ -150,7 +149,7 @@ void deleteVeiculo(vector<Veiculo> *lista){
     if(toupper(op) == 'S'){
         (*lista).erase((*lista).begin()+idVeiculo);
         cout << "Veiculo removido com sucesso!";
-        getchar();
+        pausa_tela();
     }
     return;
 }
@@ -254,7 +253,7 @@ void listaVeiculos(vector<Veiculo> lista){
     for (size_t i = 0; i < lista.size(); i++){
         lista[i].dispListaVeiculos(i+1);
     }
-    getchar();
+    pausa_tela();
 }
 
 /*  A função buscaVeiculo solicita do usuário uma placa e faz uma busca dessa placa no vetor de veículos,
