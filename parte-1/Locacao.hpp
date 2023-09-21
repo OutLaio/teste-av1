@@ -79,8 +79,39 @@ void setOcorrencia(vector<Locacao> *lista){
 
     limpaTela();
     
-    cout << "********* Cadastro de Cliente *********" << endl << endl;
-    cout << "Cliente cadastrado com sucesso!" << endl;
+    cout << "********* Cadastro de Ocorrencia *********" << endl << endl;
+    cout << "Ocorrencia cadastrada com sucesso!" << endl;
+    pausa_tela();
+    return;
+}
+
+void setOcorrenciaByVeiculo(vector<Locacao> *lista){
+    string placa;
+    Ocorrencia nova;
+    int k;
+    
+    limpaTela();
+    cout << "********* Cadastro de Ocorrencia *********" << endl << endl;
+    cout << "Informe a placa do veiculo: ";
+    getline(cin, placa);
+    
+    nova = addOcorrencia();
+
+    for (size_t i = 0; i < lista->size(); i++){
+        if((*lista)[i].veiculo.Placa.compare(placa) == 0){
+            if((*lista)[i].ocorrencia.ativa == 'n'){
+                k++;
+                (*lista)[i].ocorrencia = nova;
+            }
+        }
+    }
+    if(k == 0){
+        cout << "Nao ha locacoes registradas para o veiculo informado!" << endl;
+        pausa_tela();
+        return;
+    }
+    cout << "********* Cadastro de Ocorrencia *********" << endl << endl;
+    cout << "Ocorrencia cadastrada com sucesso!" << endl;
     pausa_tela();
     return;
 }
