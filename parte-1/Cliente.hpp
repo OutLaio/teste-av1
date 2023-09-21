@@ -29,7 +29,7 @@ typedef struct T_cliente{
             << "CPF: " << getCPF() << endl
             << "Data de nascimento: " << this->DtNascimento.toString() << endl
             << "CNH: " << this->CNH << endl;
-        getchar();
+        pausa_tela();
     }
 
     /*  A função dispListaCliente quando executada ira imprimir para o usuário os dados 
@@ -103,7 +103,7 @@ void setCliente(vector<Cliente> *lista){
     limpaTela();
     cout << "********* Cadastro de Cliente *********" << endl << endl;
     cout << "Cliente cadastrado com sucesso!" << endl;
-    getchar();
+    pausa_tela();
 }
 
 /*  A função indexCliente executa uma busca no vetor de clientes por um determinado CPF,
@@ -117,9 +117,8 @@ int indexCliente(string CPF, vector<Cliente> lista){
         }
     }
     limpaTela();
-    cout << "CPF informado nao encontrado!" << endl
-         << "(Pressione qualquer tecla para continuar...)";
-    getchar();
+    cout << "CPF informado nao encontrado!" << endl;
+    pausa_tela();
     return -1;
 }
 
@@ -149,7 +148,7 @@ void deleteCliente(vector<Cliente> *lista){
     if(toupper(op) == 'S'){
         (*lista).erase((*lista).begin()+idCliente);
         cout << "Cliente removido com sucesso!";
-        getchar();
+        pausa_tela();
     }
     return;
 }
@@ -253,7 +252,7 @@ void listaClientes(vector<Cliente> lista){
     for (size_t i = 0; i < lista.size(); i++){
         lista[i].dispListaClientes(i+1);
     }
-    getchar();
+    pausa_tela();
 }
 
 /*  A função buscaCliente solicita do usuário um CPF e faz uma busca desse CPF no vetor de clientes,

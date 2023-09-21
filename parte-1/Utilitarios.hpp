@@ -1,6 +1,14 @@
 #if !defined(UTILITARIOS_HPP)
 #define UTILITARIOS_HPP
 
+#ifdef _WIN32
+#include <windows.h>
+#define PAUSA "pause"
+#else
+#include <unistd.h>
+#define PAUSA "read -p \"Aperte ENTER para continuar...\" saindo"
+#endif
+
 #include<iostream>
 #include<vector>
 #include<string>
@@ -23,6 +31,11 @@ void limpaTela(){
 void limpaBuffer(){
     int ch;
     while ( ( ch = fgetc ( stdin ) ) != EOF && ch != '\n' );
+}
+
+// A função pausa_tela identifica se o sistema operacional é linux ou windows e executa a função system com o parâmetro definido no cabeçalho.
+void pausa_tela(){
+    system(PAUSA);
 }
 
 #endif
