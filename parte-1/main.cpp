@@ -30,10 +30,10 @@ int main(){
                 menuVeiculos(&listaVeiculos);
                 break;
             case 3:
-                menuLocacao(&listaLocacao);
+                menuOcorrencia(&listaLocacao);
                 break;
             case 4:
-                menuOcorrencia(&listaLocacao);
+                menuLocacao(&listaLocacao);
                 break;
             default:
                 cout << "Encerrando programa..." << endl;
