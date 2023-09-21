@@ -111,6 +111,7 @@ int dispMenuVeiculo(){
 int dispMenuLocacao(){
     int op = 0;
     do{
+        limpaTela();
         cout << "********* LocaFINA S/A *********" << endl << endl << "\t";
         cout << endl << "Escolha uma opcao abaixo:" << endl << endl
             << "#1. Incluir Locacao" << endl
@@ -135,6 +136,7 @@ int dispMenuLocacao(){
 int dispMenuOcorrencia(){
     int op = 0;
     do{
+        limpaTela();
         cout << "********* LocaFINA S/A *********" << endl << endl << "\t";
         cout << endl << "Escolha uma opcao abaixo:" << endl << endl
             << "#1. Incluir Ocorrencia" << endl
@@ -225,16 +227,16 @@ void menuLocacao(vector<Locacao> *lista){
             case 0:
                 break;
             case 1:
-                setLocacao(lista);
+                //setLocacao(lista);
                 break;
             case 2:
-                deleteLocacao(lista);
+                //deleteLocacao(lista);
                 break;
             case 3:
-                alteraLocacao(lista);
+                //alteraLocacao(lista);
                 break;
             case 4:
-                listaLocacao(*lista);
+                //listaLocacao(*lista);
                 break;
             default:
                 break;
@@ -253,19 +255,19 @@ void menuOcorrencia(vector<Locacao> *lista){
         case 0:
             break;
         case 1:
-            setOcorrencia(lista);
+            //setOcorrencia(lista);
             break;
         case 2:
-            deleteOcorrencia(lista);
+            //deleteOcorrencia(lista);
             break;
         case 3:
-            alteraOcorrencia(lista);
+            //alteraOcorrencia(lista);
             break;
         case 4:
-            listaOcorrenciaCliente(*lista);
+            //listaOcorrenciaCliente(*lista);
             break;
         case 5:
-            listaOcorrenciaVeiculo(*lista);
+            //listaOcorrenciaVeiculo(*lista);
             break;
         default:
             break;
