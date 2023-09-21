@@ -64,6 +64,27 @@ int dispAlteraOcorrencia(void){
     return op;
 }
 
+Ocorrencia addOcorrencia(void){
+    Ocorrencia nova;
+    
+    limpaTela();
+    cout << "********* Cadastro de Ocorrencia *********" << endl << endl;
+    cout << "Informe a data da ocorrencia:" <<  endl;
+    setData(&nova.data_hora);
+    while (!nova.data_hora.isData()){
+        cout << "Informe uma data valida:" << endl;
+        setData(&nova.data_hora);
+    }
+    
+    cout << "Informe o numero da apolice: ";
+    getline(cin, nova.apolice);
+    
+    cout << "Descreva a ocorrencia: ";
+    getline(cin, nova.descricao);
 
+    nova.ativa = 's';
+
+    return nova;
+}
 
 #endif

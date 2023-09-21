@@ -258,19 +258,19 @@ void menuOcorrencia(vector<Locacao> *lista){
         case 0:
             break;
         case 1:
-            //setOcorrencia(lista);
+            setOcorrencia(lista);
             break;
         case 2:
-            //deleteOcorrencia(lista);
+            deleteOcorrencia(lista);
             break;
         case 3:
-            //alteraOcorrencia(lista);
+            alteraOcorrencia(lista);
             break;
         case 4:
-            //listaOcorrenciaCliente(*lista);
+            listaOcorrenciaCliente(*lista);
             break;
         case 5:
-            //listaOcorrenciaVeiculo(*lista);
+            listaOcorrenciaVeiculo(*lista);
             break;
         default:
             break;
