@@ -11,6 +11,7 @@
 #include "Data.hpp"
 #include "Cliente.hpp"
 #include "Utilitarios.hpp"
+#include "Ocorrencia.hpp"
 
 using namespace std;
 
@@ -122,6 +123,7 @@ int dispMenuLocacao(){
             << endl << "Digite uma opcao valida!" << endl
             << "> # ";
         cin >> op;
+        limpaBuffer();
     }while(op < 0 || op > 4);
 
     return op;
@@ -148,6 +150,7 @@ int dispMenuOcorrencia(){
             << endl << "Digite uma opcao valida!" << endl
             << "> # ";
         cin >> op;
+        limpaBuffer();
     }while(op < 0 || op > 5);
 
     return op;
@@ -255,19 +258,19 @@ void menuOcorrencia(vector<Locacao> *lista){
         case 0:
             break;
         case 1:
-            //setOcorrencia(lista);
+            setOcorrencia(lista);
             break;
         case 2:
-            //deleteOcorrencia(lista);
+            deleteOcorrencia(lista);
             break;
         case 3:
-            //alteraOcorrencia(lista);
+            alteraOcorrencia(lista);
             break;
         case 4:
-            //listaOcorrenciaCliente(*lista);
+            listaOcorrenciaCliente(*lista);
             break;
         case 5:
-            //listaOcorrenciaVeiculo(*lista);
+            listaOcorrenciaVeiculo(*lista);
             break;
         default:
             break;
@@ -291,6 +294,7 @@ int menuPrincipal(void){
             << endl << "Digite uma opcao valida!" << endl
             << "> # ";
         cin >> op;
+        limpaBuffer();
     }while(op < 0 || op > 4);
 
     return op;
